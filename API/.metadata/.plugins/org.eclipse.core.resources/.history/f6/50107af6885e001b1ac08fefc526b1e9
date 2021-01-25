@@ -1,0 +1,64 @@
+package com.alianza.rs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alianza.rs.client.request.ClientRecordRequest;
+import com.alianza.rs.client.response.ClientFindResponse;
+import com.alianza.rs.client.response.ClientOperationResponse;
+import com.alianza.rs.entity.Client;
+import com.alianza.rs.repository.ClientRepository;
+import com.alianza.rs.utilities.FLog;
+
+@Service
+public class ServiceClient {
+
+	@Autowired
+	ClientRepository cr;
+
+	public List<ClientFindResponse> findAll() {
+		List<ClientFindResponse> cfrList = new ArrayList<>();
+		try {
+			List<Client> cList = cr.findAll();
+			cList.forEach(cli -> cfrList.add(new ClientFindResponse(cli)));
+
+		} catch (Exception e) {
+			FLog.getLogger().error("ServiceClient findAll", e);
+		}
+		return cfrList;
+	}
+
+	public ClientFindResponse findBySharedKey(String sharedKey) {
+		try {
+			return new ClientFindResponse(cr.findBySharedKey(sharedKey));
+		} catch (Exception e) {
+			FLog.getLogger().error("ServiceClient findBySharedKey: " + sharedKey, e);
+			return new ClientFindResponse(null);
+		}
+	}
+
+	public ClientOperationResponse clientCreate(ClientRecordRequest crr) {
+		ClientOperationResponse cor = new ClientOperationResponse();
+		try {
+
+		} catch (Exception e) {
+			FLog.getLogger().error("ServiceClient " + crr.toString(), e);
+		}
+		return cor;
+	}
+
+	private Client create(ClientRecordRequest crr) {
+
+		try {
+			Client c = new Client();
+			c.setBusinessId(crr.getBusinessId());
+			cr.save(c);
+		} catch (Exception e) {
+			FLog.getLogger().error("create Client", e);
+		}
+		return null;
+	}
+}

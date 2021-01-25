@@ -1,0 +1,30 @@
+package com.alianza.rs.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alianza.rs.client.response.ClientFindResponse;
+import com.alianza.rs.entity.Client;
+import com.alianza.rs.repository.ClientRepository;
+import com.alianza.rs.utilities.FLog;
+
+@Service
+public class ServiceClient {
+
+	@Autowired
+	ClientRepository cr;
+
+	public List<ClientFindResponse> findAll() {
+		List<ClientFindResponse> cfrList = new ArrayList<>();
+		try {
+			
+		} catch (Exception e) {
+			FLog.getLogger().error(e);
+		}
+		return cfrList;
+	}
+
+}

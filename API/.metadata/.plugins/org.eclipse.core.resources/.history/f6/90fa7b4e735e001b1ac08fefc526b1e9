@@ -1,0 +1,5 @@
+package com.alianza.rs.entity;
+
+public class Client {
+
+}

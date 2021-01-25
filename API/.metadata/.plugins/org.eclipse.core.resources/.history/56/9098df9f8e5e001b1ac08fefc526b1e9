@@ -1,0 +1,50 @@
+package com.alianza.rs.api;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alianza.rs.client.request.ClientRecordRequest;
+import com.alianza.rs.client.request.ClientUpgradeRequest;
+import com.alianza.rs.client.response.ClientFindResponse;
+import com.alianza.rs.client.response.ClientOperationResponse;
+import com.alianza.rs.service.ServiceClient;
+import com.alianza.rs.utilities.FLog;
+
+@RestController
+@RequestMapping("/Alianza")
+public class APIClient {
+
+	@Autowired
+	ServiceClient sc;
+
+	@GetMapping("/Client/findAll")
+	public List<ClientFindResponse> findAll() {
+		FLog.getLogger().info("-new Request: Client findAll");
+		return sc.findAll();
+	}
+
+	@GetMapping("/Client/findBySharedKey")
+	public ClientFindResponse findByState(String key) {
+		FLog.getLogger().info("-new Request: Client findByState: " + key);
+		return sc.findBySharedKey(key);
+	}
+
+	@PostMapping("/Client/upgrade")
+	public ClientOperationResponse upgrade(@RequestBody ClientUpgradeRequest clientUpgradeRequest) {
+		System.err.println("-new Request: Client upgrade: " + clientUpgradeRequest.toString());
+		return sc.upgrade(clientUpgradeRequest);
+	}
+
+	@PostMapping("/Client/create")
+	public ClientOperationResponse record(@RequestBody ClientRecordRequest clientRecordRequest) {
+		System.err.println("-new Request: Client record: " + clientRecordRequest.toString());
+		return sc.create(clientRecordRequest);
+	}
+	
+}

@@ -1,0 +1,14 @@
+package com.alianza.rs.api;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alianza.rs.service.ServiceClient;
+
+@RestController
+public class APIClient {
+
+	@Autowired
+	ServiceClient sc;
+	
+}

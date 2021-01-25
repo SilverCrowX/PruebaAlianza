@@ -1,0 +1,21 @@
+package com.alianza.rs.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alianza.rs.entity.Client;
+import com.alianza.rs.repository.ClientRepository;
+
+@Service
+public class ServiceClient {
+
+	@Autowired
+	ClientRepository cr;
+	
+	
+	public List<Client> 
+	
+	
+}

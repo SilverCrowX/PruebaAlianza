@@ -1,0 +1,7 @@
+package com.alianza.rs.client.request;
+
+public class ClientRecordRequest {
+
+	
+	
+}

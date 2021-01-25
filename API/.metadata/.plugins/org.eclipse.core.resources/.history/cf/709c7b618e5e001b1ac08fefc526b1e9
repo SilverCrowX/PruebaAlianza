@@ -1,0 +1,33 @@
+package com.alianza.rs.api;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alianza.rs.client.response.ClientFindResponse;
+import com.alianza.rs.service.ServiceClient;
+import com.alianza.rs.utilities.FLog;
+
+@RestController
+@RequestMapping("/Alianza")
+public class APIClient {
+
+	@Autowired
+	ServiceClient sc;
+
+	@GetMapping("/Client/findAll")
+	public List<ClientFindResponse> findAll() {
+		FLog.getLogger().info("-new Request: Client findAll");
+		return sc.findAll();
+	}
+	
+	@GetMapping("/Client/findBySharedKey")
+	public List<ClientFindResponse> findByState(String key) {
+		FLog.getLogger().info("-new Request: Client findByState: " + key);
+		return sc.findBySharedKey(key);
+	}
+
+}

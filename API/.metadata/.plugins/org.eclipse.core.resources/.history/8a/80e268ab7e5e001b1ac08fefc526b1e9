@@ -1,0 +1,76 @@
+package com.alianza.rs.client.response;
+
+import com.alianza.rs.entity.Client;
+import com.alianza.rs.utilities.FLog;
+
+public class ClientFindResponse {
+
+	private String key;
+	private Long id;
+	private String email;
+	private Long number;
+	private String date;
+
+	public ClientFindResponse(Client client) {
+
+		if (client != null) {
+			try {
+				this.key = client.getSharedKey();
+				this.id = client.getId();
+				this.email = client.getEmail();
+				this.number = client.getPhone();
+				this.
+			} catch (Exception e) {
+				FLog.getLogger().warn("ClientFindResponse: ", e);
+			}
+		}
+
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "ClientResponse [key=" + key + ", id=" + id + ", email=" + email + ", number=" + number + ", date="
+				+ date + "]";
+	}
+
+}

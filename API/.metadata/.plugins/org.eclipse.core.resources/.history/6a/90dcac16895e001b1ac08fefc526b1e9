@@ -1,0 +1,71 @@
+package com.alianza.rs.client.request;
+
+public class ClientRecordRequest {
+
+	private String key;
+	private String businessId;
+	private String email;
+	private Long phone;
+	private String added;
+	private String start;
+	private String end;
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(String businessId) {
+		this.businessId = businessId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Long getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Long phone) {
+		this.phone = phone;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+	public void setAdded(String added) {
+		this.added = added;
+	}
+
+	@Override
+	public String toString() {
+		return "ClientRecordRequest [key=" + key + ", businessId=" + businessId + ", email=" + email + ", phone="
+				+ phone + ", added=" + added + ", start=" + start + ", end=" + end + "]";
+	}
+
+}
