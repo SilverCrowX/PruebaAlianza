@@ -1,0 +1,16 @@
+<button mat-raised-button color="primary" (click)="createNewClient()">
+          New
+        </button>
+        <button mat-raised-button color="primary">Export</button>
+
+        <mat-form-field>
+          <mat-label>Enter Shared Key</mat-label>
+          <input
+            matInput
+            placeholder="Enter Shared Key"
+            [(ngModel)]="valueFilter"
+            (keypress)="getClientsFilter()"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Advanced Search</button>
