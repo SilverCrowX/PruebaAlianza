@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Client } from 'src/app/model/client';
 import { ClientService } from 'src/app/services/client.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-admin-client',
@@ -11,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AdminClientComponent implements OnInit {
   showFiller = false;
-
+  valueFilter: string = '';
   displayedColumns: string[] = [
     'sharedKey',
     'business',
@@ -21,7 +22,6 @@ export class AdminClientComponent implements OnInit {
     'action',
   ];
 
-  valueFilter: string;
   clients: Client[] = [];
   /*
   clients: Client[] = [
@@ -38,23 +38,21 @@ export class AdminClientComponent implements OnInit {
 
   dataSource = new MatTableDataSource(this.clients);
 
-  constructor(private clientService: ClientService, public dialog: MatDialog) {
-    this.valueFilter = '';
+  constructor(private clientService: ClientService, public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: new Client(),
+    });
+
+    dialogRef.beforeClosed().subscribe(() => {
+      this.getDateClient();
+    });
   }
 
   ngOnInit(): void {
     this.getDateClient();
-  }
-
-  getClientsFilter() {
-    this.clientService.getFilterClients(this.valueFilter).subscribe(
-      (data: any) => {
-        console.log(data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
 
   getDateClient() {
@@ -71,5 +69,17 @@ export class AdminClientComponent implements OnInit {
 
   modifyClient(clientModify: Client) {
     this.clientForm = clientModify;
+  }
+
+  searchClient() {
+    this.clientService.getClient(this.valueFilter).subscribe(
+      (data: any) => {
+        //this.clients = data;
+        this.dataSource = new MatTableDataSource(data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

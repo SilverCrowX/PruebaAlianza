@@ -1,11 +1,65 @@
-<h1 mat-dialog-title>Create new Client {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+
+<h1>Create Client</h1>
+
+
+<form [formGroup]="userForm" autocomplete="off">
   <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Name"
+      formControlName="name"
+      [(ngModel)]="clientForm.businessId"
+    />
   </mat-form-field>
-</div>
+
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Phone"
+      formControlName="phone"
+      [(ngModel)]="clientForm.number"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>E-Mail</mat-label>
+    <input
+      matInput
+      type="email"
+      placeholder="example@email.com"
+      formControlName="email"
+      [(ngModel)]="clientForm.email"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Start Date</mat-label>
+    <input
+      matInput
+      type="date"
+      placeholder="21/06/1999"
+      formControlName="datestart"
+      [(ngModel)]="clientForm.date"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>End Date</mat-label>
+    <input
+      matInput
+      type="date"
+      placeholder="21/06/1999"
+      formControlName="dateend"
+      [(ngModel)]="clientForm.endDate"
+    />
+  </mat-form-field>
+  
+</form>
+
 <div mat-dialog-actions>
   <button mat-button (click)="createNewClient()">Ok</button>
 </div>

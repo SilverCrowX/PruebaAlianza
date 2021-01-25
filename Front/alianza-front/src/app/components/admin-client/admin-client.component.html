@@ -10,6 +10,30 @@
   <mat-drawer-content>
     <div>
       <div>
+        <button mat-raised-button color="primary" (click)="openDialog()">
+          New
+        </button>
+        <button mat-raised-button color="primary">Export</button>
+
+
+        <mat-form-field>
+          <mat-label>Enter Shared Key</mat-label>
+          <input
+            matInput
+            placeholder="Enter Shared Key"
+            [(ngModel)]="valueFilter"
+          />
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" (click)="searchClient()">
+          Buscar
+        </button>
+
+
+        <button mat-raised-button color="primary">Advanced Search</button>
+
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Position Column -->
           <ng-container matColumnDef="sharedKey">
@@ -52,57 +76,6 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <div>
-          <mat-form-field>
-            <mat-label>Enter Shared Key</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Enter Shared Key"
-              [(ngModel)]="clientForm.businessId"
-            />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Enter Shared Key</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Enter Shared Key"
-              [(ngModel)]="clientForm.number"
-            />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Enter Shared Key</mat-label>
-            <input
-              matInput
-              type="email"
-              placeholder="Enter Shared Key"
-              [(ngModel)]="clientForm.email"
-            />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Enter Shared Key</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Enter Shared Key"
-              [(ngModel)]="clientForm.date"
-            />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Enter Shared Key</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Enter Shared Key"
-              [(ngModel)]="clientForm.endDate"
-            />
-          </mat-form-field>
-        </div>
       </div>
     </div>
   </mat-drawer-content>

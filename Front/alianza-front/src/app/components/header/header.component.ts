@@ -15,22 +15,8 @@ export class HeaderComponent implements OnInit {
     this.valueFilter = '';
   }
 
-
-
-
-
   ngOnInit(): void {}
 
-  getClientsFilter() {
-    this.clientService.getFilterClients(this.valueFilter).subscribe(
-      (data: any) => {
-        console.log(data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
